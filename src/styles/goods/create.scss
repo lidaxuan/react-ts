@@ -1,0 +1,83 @@
+p {
+  margin-bottom: 0 !important;
+}
+.title {
+  font-size: 18px;
+  font-weight: bolder;
+}
+.tip {
+  font-size: 14px;
+  margin-top: 10px;
+}
+.flex {
+  display: flex;
+}
+.goods-type {
+  margin-top: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid #ccc;
+  background-color: rgba($color:  #ccc, $alpha: 0.5);
+  cursor: pointer;
+}
+.checked {
+  background-color: royalblue;
+  p {
+    color: white;
+  }
+}
+.ml20 {
+  margin-left: 20px;
+}
+.ml10 {
+  margin-left: 10px;
+}
+.mt20 {
+  margin-top: 20px;
+}
+.mb20 {
+  margin-bottom: 20px;
+}
+.center {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  &>div {
+    margin: 0;
+    width: -webkit-fill-available;
+  }
+}
+.ml20 {
+  margin-left: 20px;
+}
+.inline {
+  display: inline-block;
+}
+
+.name{
+  display: flex;
+}
+
+// 对于antd样式的修改
+.ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+  display: none !important;
+}
+
+// title旁边有红杠
+.title-red {
+  font-size: 14px;
+  color: #0A0A0A;
+  font-weight: 500;
+  position: relative;
+  &::before {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    width: 3px;
+    height: 14px;
+    background: #EE4C47;
+  }
+}

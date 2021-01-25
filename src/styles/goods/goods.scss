@@ -1,0 +1,80 @@
+.dfx-jcsb{
+    display: flex;
+    justify-content:space-between
+}
+.dfx{
+    display: flex;
+}
+.dfx-fww{
+    display: flex;
+    flex-wrap:wrap ;
+}
+.dfx-jcsa{
+    display: flex;
+    justify-content:space-around
+}
+.goodsImg{
+    width: 120px;
+    height: 90px;
+    border: 1px solid #DDDDDD;
+}
+.goodname{
+    line-height: 90px;
+}
+.mt20{
+    margin-top:20px;
+}
+.ml10{
+    margin-left: 10px;
+}
+.pd20{
+    padding: 20px;
+}
+.pdl20{
+    padding-left: 20px;
+}
+.fr{
+    float: right;
+}
+.hed{
+    background: #FFFFFF;
+    box-shadow: 2px 2px 4px 0px rgba(102, 107, 128, 0.1);
+    border-radius: 4px;
+    height: 50px;
+    padding:10px 0 0 10px;
+    .ant-form-item{
+        margin-bottom: 0;
+    }
+}
+
+
+.line{
+    margin-bottom: 20px;
+    border-bottom: 1px solid #DDDDDD;
+    padding-bottom: 20px;
+    font-size: 18px;
+}
+.title {
+    font-size: 18px;
+    font-weight: bolder;
+    border-left:5px solid red ;
+    padding-left: 5px;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+.poster{
+    width: 360px;
+    height: 410px;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+}
+.cup{
+    cursor: pointer;
+}
+.ml100{
+    margin-left: 100px;
+}
+.tar{
+    text-align: right;
+}

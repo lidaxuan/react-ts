@@ -1,0 +1,41 @@
+/*
+ * @file flex 常用布局
+ * @author svon.me@gmail.com
+ */
+
+.flex {
+  display: flex;
+}
+.flex-max {
+  flex: 1;
+}
+.flex-item {
+  flex: 1;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-aic {
+  align-items: center;
+}
+.flex-aiend {
+  align-items: flex-end;
+}
+
+
+.flex-jcc {
+  justify-content: center;
+}
+
+.flex-ccb {
+  justify-content: space-between;
+}
+.flex-jcend{
+  justify-content: flex-end;
+}

@@ -1,0 +1,27 @@
+.buttonList {
+  text-align: right;
+  margin: 20px 0;
+}
+
+.buttonList button {
+  margin-right: 15px;
+}
+
+.formBox {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.formBox .ant-form-item {
+  margin-right: 20px;
+}
+
+.dfx-jcsa{
+  display: flex;
+  justify-content:space-around;
+}
+
+.dfx-jcsb{
+  display: flex;
+  justify-content:space-between
+}

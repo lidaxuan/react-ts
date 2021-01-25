@@ -1,0 +1,39 @@
+.btnBox{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+.createBox{
+  width: 350px;
+}
+.sureBtn{
+  width: 80px;
+  margin-left: 50px;
+}
+.pointer {
+  color: #1785FF;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.addLiveTitle{
+  position: relative;
+}
+.addLiveTitle::before{
+  content: '';
+  width: 3px;
+  height: 12px;
+  background: #ee4c47;
+  position: absolute;
+  left: -8px;
+  top: 6px;
+}
+.circleBorder{
+  border-radius: 15px;
+}
+.cancelBtn{
+  width: 80px;
+  border-color: #ee4c47;
+  color: #ee4c47;
+  margin-left: 20px;
+}

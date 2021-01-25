@@ -1,0 +1,8 @@
+/**
+ * @file scss 方法
+ */
+
+@function unit($number) {
+  $size: $number - 1;
+  @return $size + 1px;
+}

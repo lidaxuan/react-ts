@@ -1,0 +1,23 @@
+/**
+ * @file 字体
+ * @author svon.me@gmail.com
+ */
+
+@for $index from 12 through 30 {
+  #app .font-#{$index} {
+    font-size: unit($index);
+  }
+}
+
+/* 标题 */
+.font-black {
+  color: $color-black;
+}
+/* 次要文字 */
+.font-gray {
+  color: $color-gray;
+}
+/* 主题色文字 */
+.font-red {
+  color: $color-price;
+}

@@ -1,0 +1,33 @@
+p {
+  margin: 0;
+  padding: 0;
+}
+.titleScreen {
+  width: 100%;
+  height: 50px;
+  background: #FFFFFF;
+  box-shadow: 2px 2px 4px 0px rgba(102, 107, 128, 0.1);
+  border-radius: 4px;
+}
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.table-img {
+  height: 90px;
+  width: auto;
+  margin-right: 8px;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+.pointer {
+  color: #1785FF;
+  font-size: 14px;
+  cursor: pointer;
+}
+.wrap {
+  flex-wrap: wrap;
+}

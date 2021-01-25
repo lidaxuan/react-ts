@@ -1,0 +1,79 @@
+.goodsListBox{
+  padding: 30px 20px;
+  box-sizing: border-box;
+  background: #F1F7FF;
+  margin-bottom: 40px;
+}
+.searchBox{
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  .ant-cascader-picker{
+    width: 200px!important;
+  }
+}
+.searchBtn{
+  width: 300px;
+  margin-bottom: 10px;
+  .ant-btn{
+    border-left: 0;
+  }
+}
+.goodsList{
+  display: flex;
+  flex-wrap: wrap;
+  .item{
+    width: 168px;
+    border:1px solid rgba($color: #000000, $alpha: 0.2);
+    margin-right: 24px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background: #fff;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    img{
+      width: 100%;
+      border-radius: 8px;
+    }
+  }
+  .items{
+    width: 168px;
+    border: 1px solid #1785FF;
+    margin-right: 24px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background: #fff;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    img{
+      width: 100%;
+      border-radius: 8px;
+    }
+  }
+}
+.goods_name{
+  font-size: 14px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.goods_price{
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+  .disc_price{
+    font-size: 18px;
+    color: #FF2236;
+  }
+  .mkt_price{
+    font-size: 12px;
+    color: #C6C7C7;
+    text-decoration: line-through;
+    margin-left: 5px;
+  }
+}
+.pagination{
+  margin-left: auto;
+  margin-right: 50px;
+  margin-top: 20px;
+}

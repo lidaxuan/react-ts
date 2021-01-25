@@ -1,0 +1,129 @@
+/*
+ * @file 公共样式
+ * @author svon.me@gmail.com
+ */
+
+
+@import "./base.scss";
+
+@mixin header($height){
+	height: $height;
+  padding-left: 0;
+  line-height: 1em;
+  padding: 0;
+  background-color: $color-white;
+  box-shadow: 0 4px 4px 0 #e0edf9;
+  .logo {
+    width: 37px;
+    height: 37px;
+    display: block;
+  }
+  .portrait {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}
+
+@mixin sider($width, $foldWidth,$headerHeight) {
+  height: 100%;
+  overflow-y: auto;
+  $menuHeight: 60px;
+  .ant-menu {
+    border-right: 0;
+  }
+  .sider-box {
+    width: 100%;
+    height: 100%;
+    padding-top: $menuHeight;
+    position: relative;
+    overflow-y: auto;
+  }
+  .sider-menu {
+    position: fixed;
+    left: 0;
+    top: $headerHeight;
+    width: $width;
+    height: $menuHeight;
+    background-color: $color-white;
+    z-index: 2;
+    transition: all 0.3s;
+    .anticon {
+      cursor: pointer;
+    }
+  }
+  @at-root {
+    .fold {
+      .sider-menu {
+        width: $foldWidth !important;
+      }
+    }
+  }
+}
+
+html, body {
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+}
+
+.app-layout {
+  $headerHeight: 50px;
+  $siderWidth: 180px;
+  $siderFoldWidth: 90px;
+  padding-top: $headerHeight;
+  height: 100%;
+  .header-box {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    @include header($headerHeight);
+  }
+
+  .app-layout-main {
+    min-height: 100%;
+    background: #f5fafe;
+    padding-left: $siderWidth;
+    .app-layout-sider {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      top: $headerHeight;
+      background-color: $color-white;
+      width: $siderWidth;
+      @include sider($siderWidth, $siderFoldWidth, $headerHeight);
+    }
+
+    &.fold {
+      padding-left: $siderFoldWidth;
+      .app-layout-sider {
+        width: $siderFoldWidth;
+      }
+    }
+  }
+  .app-layout-body {
+    min-height: 100%;
+    overflow-y: auto;
+    transition: width 0.3s;
+  }
+  .layout-breadcrumb {
+    background-color: $color-white;
+    margin-left: 5px;
+    height: 50px;
+    padding: 0 18px;
+  }
+  .app-layout-content {
+    background-color: $color-white;
+    border-radius: 5px;
+  }
+}

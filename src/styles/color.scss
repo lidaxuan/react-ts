@@ -1,0 +1,25 @@
+/*
+ * @file 公共颜色值
+ * @author svon.me@gmail.com
+ */
+
+$background: #F7F8F9; /* 背景颜色 */
+$buy-btn: #EE4C47;    /* 购买按钮 */
+$btn-disabled: #C4C4C4;
+/* 状态 */
+$color-status-link: rgba(#2E87F0, 1);    /* 链接 */
+$color-status-success: rgba(#85BE27, 1); /* 成功 */
+$color-status-tips: rgba(#FF9900, 1);    /* 提示 */
+$color-status-error: rgba(#E21E1F, 1);   /* 错误/警告 */
+$color-status-free: rgba(#2fc25b, 1);    /* 空闲状态 */
+
+/* 正常文字 */
+$color-black: #0a0a0a;      /* 黑色, 标题，正文，重要文字 */
+$color-gray: #5D5C5E;          /* 灰色，次要文字，辅助文字 */
+
+$color-white: rgba(#fff, 1);         /* 白色， 背景 */
+$color-light-gray: rgba(#fafafa, 1); /* 浅灰，分割模块的底色 */
+$color-border: rgba(#ddd, 1);        /* 边框色，分割线 */
+$color-border-hover: rgba(#ccc, 1);  /* 边框色 hover */
+$color-tr-hover: rgba(#E5E8EC, 1);   /* 表单 hover */
+$color-price: #FF2236;  /* 金额颜色 */

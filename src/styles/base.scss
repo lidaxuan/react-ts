@@ -1,0 +1,124 @@
+/**
+ * @file 公共样式
+ * @author svon.me@gmail.com
+ */
+
+@import "./color.scss";
+@import "./flex.scss";
+@import "./font.scss";
+@import "./width.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  /* box-sizing: border-box; */
+}
+
+.b {
+  font-weight: bolder;
+}
+
+#app .middle {
+  vertical-align: middle;
+}
+
+ /*
+  ml5, ml10... ml50
+  ml6, ml8, ml10, ml12
+*/
+@each $list in (5, 10, 15, 20, 25, 30, 35, 40, 45, 50), (4, 6, 8, 12, 14, 16) {
+  @each $number in $list {
+    .m#{$number} {
+      margin: unit($number);
+    }
+    .ml#{$number} {
+      margin-left: unit($number);
+    }
+
+    .mt#{$number} {
+      margin-top: unit($number);
+    }
+
+    .mr#{$number} {
+      margin-right: unit($number);
+    }
+
+    .mb#{$number} {
+      margin-bottom: unit($number);
+    }
+    .p#{$number} {
+      padding: unit($number);
+    }
+    .pl#{$number} {
+      padding-left: unit($number);
+    }
+
+    .pt#{$number} {
+      padding-top: unit($number);
+    }
+
+    .pr#{$number} {
+      padding-right: unit($number);
+    }
+
+    .pb#{$number} {
+      padding-bottom: unit($number);
+    }
+  }
+}
+
+.dbk {
+  display: block;
+}
+.dibk {
+  display: inline-block;
+}
+
+.align-top {
+  vertical-align: top;
+}
+
+.wmax {
+  width: 100%;
+}
+.hmax {
+  height: 100%;
+}
+
+.t-a-c {
+  text-align: center;
+}
+
+.upload-box {
+  position: relative;
+  .upload-remove {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+}
+
+
+/* 灰色背景 */
+.background-gray {
+  background-color: $background;
+}
+
+.border {
+  border: 1px solid #d1d1d1;
+}
+
+.line{
+  margin-bottom: 20px;
+  border-bottom: 1px solid #DDDDDD;
+  padding-bottom: 20px;
+  font-size: 18px;
+}
+.goodsImg{
+  width: 120px;
+  height: 120px;
+  border: 1px solid #DDDDDD;
+}

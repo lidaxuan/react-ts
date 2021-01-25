@@ -1,0 +1,29 @@
+/* 等宽等高 */
+.equal-width-height {
+  width: 100%;
+  position: relative;
+  border: 1px solid transparent;
+
+  &::before {
+    content: '';
+    display: block;
+    margin-top: 100%;
+  }
+
+  @for $index from 0 through 20 {
+    $height: 50 + $index * 5;
+    &.equal-height-#{$height} {
+      &::before {
+        margin-top: unquote($height + "%");
+      }
+    }
+  }
+
+  & > .equal-content {
+    left: -1px;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    position: absolute;
+  }
+}
