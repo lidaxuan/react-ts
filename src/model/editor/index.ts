@@ -3,11 +3,11 @@
  * @Description: 
  * @Author: 李继玄（15201002062@163.com）
  * @Date: 2021-01-24 15:21:48
- * @FilePath: /react-ts-antvg6/src/model/editor/index.ts
+ * @FilePath: /react-ts/src/model/editor/index.ts
  */
 
 export const getData = function () {
-  const arr = [
+  /* const arr = [
     {
       "name": "频次控制",
       "label": "频次控制",
@@ -72,7 +72,7 @@ export const getData = function () {
       "offsetY": 30,
       "id": "5d956c905e1511ebb4c5e95d3705ea2c"
     }
-  ];
+  ]; */
   
   const data = {
     nodes: [
@@ -86,8 +86,11 @@ export const getData = function () {
           { title: 'Err', value: 'N' }
         ],
         type: 'modelRect',
+        shape: 'modelRect',
         x: 300,
-        y: 50
+        y: 50,
+        inPoints: [0,0.5],
+        outPoints: [1,0.5],
       },
       {
         id: '2',
@@ -99,8 +102,11 @@ export const getData = function () {
           { title: 'Err', value: 'N' }
         ],
         type: 'modelRect',
+        shape: 'modelRect',
         x: 150,
         y: 300,
+        inPoints: [0,0.5],
+        outPoints: [1,0.5],
       },
       {
         id: '3',
@@ -112,8 +118,11 @@ export const getData = function () {
           { title: 'Err', value: 'N' }
         ], 
         type: 'modelRect',
+        shape: 'modelRect',
         x: 450,
-        y: 300
+        y: 300,
+        inPoints: [0,0.5],
+        outPoints: [1,0.5],
       },
     ],
     edges: [
@@ -139,5 +148,5 @@ export const getData = function () {
       },
     ],
   };
-  return data as any;
+  return data;
 };

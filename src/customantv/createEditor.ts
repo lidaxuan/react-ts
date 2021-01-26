@@ -2,11 +2,11 @@
  * @Description: 初始化g6
  * @Author: 李继玄（15201002062@163.com）
  * @Date: 2021-01-24 14:58:31
- * @FilePath: /react-ts-antvg6/src/customantv/createEditor.ts
+ * @FilePath: /react-ts/src/customantv/createEditor.ts
  */
 
 import G6 from "@antv/g6";
-import customNode from './customNode';
+import { v4 as uniqueId } from 'uuid';
 
 const COLLAPSE_ICON = function COLLAPSE_ICON(x, y, r) {
   return [
@@ -37,11 +37,11 @@ const ICON_MAP = {
 
 
 class CreateEditor {
-  data: Array<any>;
+  data: any;
   graph: any;
   width: number | string;
   height: number | string;
-  constructor(data: Array<any>, width?, height?) {
+  constructor(data, width?, height?) {
     this.data = data;
     this.width = width || 800;
     this.height = height || 800;
@@ -52,7 +52,7 @@ class CreateEditor {
       width: this.width,
       height: this.height,
       defaultNode: {
-        size: [100],
+        size: [100, 100],
         shape: 'modelRect',
         labelCfg: {
           style: {
@@ -131,25 +131,34 @@ class CreateEditor {
       drawShape: function drawShape(cfg, group) {
         const color = cfg.error ? '#F4664A' : '#30BF78';
         const r = 2;
-        console.log(cfg);
+        // 此处必须是NUMBER 不然bbox不正常
+        const width = parseInt(cfg.size[0]);
+        const height = parseInt(cfg.size[1]);
+        // 此处必须有偏移 不然drag-node错位
+        const offsetX = -width / 2;
+        const offsetY = -height / 2;
+        console.log(offsetX, offsetY);
+
         const shape = group.addShape('rect', {
           attrs: {
             x: 0,
             y: 0,
-            width: 200,
-            height: 60,
+            width: width,
+            height: height,
             stroke: color,
             radius: r
           },
           name: 'main-box',
           draggable: true,
         });
-    
+        console.log(cfg);
+
+
         group.addShape('rect', {
           attrs: {
             x: 0,
             y: 0,
-            width: 200,
+            width: width,
             height: 20,
             fill: color,
             radius: [r, r, 0, 0],
@@ -157,7 +166,7 @@ class CreateEditor {
           name: 'title-box',
           draggable: true,
         });
-    
+
         // 左侧图标
         group.addShape('image', {
           attrs: {
@@ -170,7 +179,7 @@ class CreateEditor {
           },
           name: 'node-icon',
         });
-    
+
         // 标题
         group.addShape('text', {
           attrs: {
@@ -183,12 +192,12 @@ class CreateEditor {
           },
           name: 'title'
         });
-    
-    
+
+
         // 增加右边 marker
         group.addShape('marker', {
           attrs: {
-            x: 184,
+            x: width,
             y: 30,
             r: 6,
             cursor: 'pointer',
@@ -198,7 +207,7 @@ class CreateEditor {
           },
           name: 'collapse-icon',
         });
-    
+
         // 增加左边 marker
         group.addShape('marker', {
           attrs: {
@@ -212,21 +221,7 @@ class CreateEditor {
           },
           name: 'collapse-icon',
         });
-    
-        // 增加上边 marker
-        group.addShape('marker', {
-          attrs: {
-            x: 90,
-            y: 0,
-            r: 6,
-            cursor: 'pointer',
-            symbol: cfg.collapse ? EXPAND_ICON : COLLAPSE_ICON,
-            stroke: '#666',
-            lineWidth: 1,
-          },
-          name: 'collapse-icon',
-        });
-        
+
         // 节点中的内容列表
         cfg.panels.forEach((item, index) => {
           // 名称
@@ -234,7 +229,7 @@ class CreateEditor {
             attrs: {
               textBaseline: 'top',
               y: 25,
-              x: 24 + index * 60,
+              x: 24 + index * 20,
               lineHeight: 20,
               text: item.title,
               fill: 'rgba(0,0,0, 0.4)',
@@ -242,13 +237,13 @@ class CreateEditor {
             name: `index-title-${index}`,
             draggable: true,
           });
-    
-          // 值
+
+          //   // 值
           group.addShape('text', {
             attrs: {
               textBaseline: 'top',
               y: 42,
-              x: 24 + index * 60,
+              x: 24 + index * 20,
               lineHeight: 20,
               text: item.value,
               fill: '#595959',
@@ -256,8 +251,57 @@ class CreateEditor {
             name: `index-title-${index}`,
             draggable: true,
           });
-    
         });
+        if (cfg.inPoints) {
+          group.addShape("circle", {
+            attrs: {
+              id: 'circle' + uniqueId(),
+              x: width / 2,
+              y: 0,
+              r: 10,
+              isInPointOut: true,
+              fill: "#1890ff",
+              opacity: 0
+            }
+          });
+          group.addShape("circle", {
+            attrs: {
+              id: uniqueId(),
+              x: width / 2,
+              y: 0,
+              r: 3,
+              isInPoint: true,
+              fill: "#fff",
+              stroke: "#1890ff",
+              opacity: 0
+            }
+          });
+        }
+        if (cfg.outPoints) {
+          group.addShape("circle", {
+            attrs: {
+              id: 'circle' + uniqueId(),
+              x: width / 2,
+              y: height,
+              r: 10,
+              isOutPointOut: true,
+              fill: "#1890ff",
+              opacity: 0 //默認0 需要時改成0.3
+            }
+          });
+          group.addShape("circle", {
+            attrs: {
+              id: uniqueId(),
+              x: width / 2,
+              y: height,
+              r: 3,
+              isOutPoint: true,
+              fill: "#fff",
+              stroke: "#1890ff",
+              opacity: 0
+            }
+          });
+        }
         return shape;
       },
       setState(name, value, item) {
@@ -276,8 +320,6 @@ class CreateEditor {
       {
         // 响应状态变化
         setState(name, value, item) {
-          console.log(name);
-          
           const group = item.getContainer();
           const shape = group.get('children')[0]; // 顺序根据 draw 时确定
           if (name === 'active') {
@@ -339,22 +381,16 @@ class CreateEditor {
       const edge = ev.item;
       this.graph.setItemState(edge, 'active', true);
     });
-    
+
     this.graph.on('edge:mouseleave', (ev) => {
       const edge = ev.item;
       this.graph.setItemState(edge, 'active', false);
     });
     this.graph.on('node:dragend', (ev) => {
       const edge = ev.item;
-      console.log(ev);
-      
       this.graph.setItemState(edge, 'active', false);
     });
     this.graph.on('node:click', (e) => {
-      console.log(e);
-      // return;
-      console.log(e.target.get('name'));
-      
       if (e.target.get('name') === 'collapse-icon') {
         e.item.getModel().collapsed = !e.item.getModel().collapsed;
         this.graph.setItemState(e.item, 'collapsed', e.item.getModel().collapsed);

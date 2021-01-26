@@ -31,6 +31,7 @@ export const routers = {
   },
   test: {
     in: '/test/in', // 注入
+    study: '/test/study', // 注入
   },
   shop:{
     set:'/shop/set' //首页轮播配置
@@ -160,10 +161,16 @@ export const routerMenus = [
     name: 'test',
     key: 'test',
     icon: 'iconorder',
-    children: [{
-      name: '注入',
-      key: 'test.in'
-    }]
+    children: [
+      {
+        name: '注入',
+        key: 'test.in'
+      },
+      {
+        name: '学习',
+        key: 'test.study'
+      }
+    ]
   },
   {
     name: '收益管理',

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 李继玄（15201002062@163.com）
  * @Date: 2021-01-22 14:31:24
- * @FilePath: /react-ts-antvg6/src/pages/antv/index.tsx
+ * @FilePath: /react-ts/src/pages/antv/index.tsx
  */
 /**
  * @file 商品管理
@@ -37,16 +37,14 @@ export default abstract class Antv<Props extends GoodsProps, State extends Goods
   stateInit() {
     const state = {
       graph: '',
-      editorClass: '',
+      editorClass: void 0,
     };
     return state as State;
   }
 
   componentDidMount() {
     initBehavors();
-    setTimeout(() => {
-      this.init();
-    }, 1000);
+    this.init();
     // todo
   }
 

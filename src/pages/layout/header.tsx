@@ -62,13 +62,13 @@ class Header extends Component<any, User> {
     if (menu) {
       return (<Dropdown overlay={ menu }>
         <div>
-          <b className="font-black font-16">趣播客</b>
+          <b className="font-black font-16">XXXXXXXX</b>
           <CaretDownOutlined />
         </div>
       </Dropdown>);
     }
     return (<div>
-      <b className="font-black font-16">趣播客</b>
+      <b className="font-black font-16">XXXXXXXX</b>
     </div>);
   }
   render () {
@@ -78,7 +78,7 @@ class Header extends Component<any, User> {
       <Col span={12} className="hmax pl20">
         <div className="flex flex-aic hmax">
           <div className="pr5">
-            <img className="logo" src={ logo }/>
+            {/* <img className="logo" src={ logo }/> */}
           </div>
           { this.getTitle() }
         </div>

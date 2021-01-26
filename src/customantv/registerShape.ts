@@ -1,6 +1,7 @@
+/* eslint-disable */
 import G6 from '@antv/g6'
 import insertCss from 'insert-css';
-
+import { v4 as uniqueId } from 'uuid';
 insertCss(`
   #contextMenu {
     position: absolute;
@@ -83,10 +84,16 @@ const ICON_MAP = {
 }
 
 
-G6.registerNode('pipeline-node', {
-  drawShape: function drawShape(cfg, group) {
+G6.registerNode('modelRect', {
+  drawShape: function drawShape(cfg , group) {
     const color = cfg.error ? '#F4664A' : '#30BF78'
     const r = 2;
+    // 此处必须是NUMBER 不然bbox不正常
+    const width = parseInt(cfg.size[0]);
+    const height = parseInt(cfg.size[1]);
+    // 此处必须有偏移 不然drag-node错位
+    const offsetX = -width / 2;
+    const offsetY = -height / 2;
     const shape = group.addShape('rect', {
       attrs: {
         x: 0,
@@ -113,18 +120,20 @@ G6.registerNode('pipeline-node', {
       draggable: true,
     });
 
+    console.log(cfg);
+    
     // 左侧图标
-    group.addShape('image', {
-      attrs: {
-        x: 4,
-        y: 2,
-        height: 16,
-        width: 16,
-        cursor: 'pointer',
-        img: ICON_MAP[cfg.nodeType || 'app'],
-      },
-      name: 'node-icon',
-    });
+    // group.addShape('image', {
+    //   attrs: {
+    //     x: 4,
+    //     y: 2,
+    //     height: 16,
+    //     width: 16,
+    //     cursor: 'pointer',
+    //     img: ICON_MAP[cfg.nodeType || 'app'],
+    //   },
+    //   name: 'node-icon',
+    // });
 
     // 标题
     group.addShape('text', {
@@ -138,7 +147,6 @@ G6.registerNode('pipeline-node', {
       },
       name: 'title'
     });
-
 
     // 增加右边 marker
     group.addShape('marker', {
@@ -183,34 +191,112 @@ G6.registerNode('pipeline-node', {
     });
 
     // 节点中的内容列表
-    cfg.panels.forEach((item, index) => {
-      // 名称
-      group.addShape('text', {
-        attrs: {
-          textBaseline: 'top',
-          y: 25,
-          x: 24 + index * 60,
-          lineHeight: 20,
-          text: item.title,
-          fill: 'rgba(0,0,0, 0.4)',
-        },
-        name: `index-title-${index}`
-      });
+    // cfg.panels.forEach((item, index) => {
+    //   // 名称
+    //   group.addShape('text', {
+    //     attrs: {
+    //       textBaseline: 'top',
+    //       y: 25,
+    //       x: 24 + index * 60,
+    //       lineHeight: 20,
+    //       text: item.title,
+    //       fill: 'rgba(0,0,0, 0.4)',
+    //     },
+    //     name: `index-title-${index}`
+    //   });
 
-      // 值
-      group.addShape('text', {
-        attrs: {
-          textBaseline: 'top',
-          y: 42,
-          x: 24 + index * 60,
-          lineHeight: 20,
-          text: item.value,
-          fill: '#595959',
-        },
-        name: `index-title-${index}`
-      });
+    //   // 值
+    //   group.addShape('text', {
+    //     attrs: {
+    //       textBaseline: 'top',
+    //       y: 42,
+    //       x: 24 + index * 60,
+    //       lineHeight: 20,
+    //       text: item.value,
+    //       fill: '#595959',
+    //     },
+    //     name: `index-title-${index}`
+    //   });
 
-    });
+    // });
+    // if (cfg.inPoints) {
+    //   for (let i = 0; i < cfg.inPoints.length; i++) {
+    //     let x,
+    //       y = 0;
+    //     //0为顶 1为底
+    //     if (cfg.inPoints[i][0] === 0) {
+    //       y = 0;
+    //     } else {
+    //       y = height;
+    //     }
+    //     x = width * cfg.inPoints[i][1];
+    //     const id = 'circle' + uniqueId();
+    //     group.addShape("circle", {
+    //       attrs: {
+    //         id: 'circle' + uniqueId(),
+    //         parent: id,
+    //         x: x + offsetX,
+    //         y: y + offsetY,
+    //         r: 10,
+    //         isInPointOut: true,
+    //         fill: "#1890ff",
+    //         opacity: 0
+    //       }
+    //     });
+    //     group.addShape("circle", {
+    //       attrs: {
+    //         id: id,
+    //         x: x + offsetX,
+    //         y: y + offsetY,
+    //         r: 3,
+    //         isInPoint: true,
+    //         fill: "#fff",
+    //         stroke: "#1890ff",
+    //         opacity: 0
+    //       }
+    //     });
+    //   }
+    // }
+    // console.log(cfg);
+    
+    // if (cfg.outPoints) {
+    //   for (let i = 0; i < cfg.outPoints.length; i++) {
+    //     let x,
+    //       y = 0;
+    //     //0为顶 1为底
+    //     if (cfg.outPoints[i][0] === 0) {
+    //       y = 0;
+    //     } else {
+    //       y = height;
+    //     }
+    //     x = width * cfg.outPoints[i][1];
+    //     const id = 'circle' + uniqueId();
+    //     group.addShape("circle", {
+    //       attrs: {
+    //         id: 'circle' + uniqueId(),
+    //         parent: id,
+    //         x: x + offsetX,
+    //         y: y + offsetY,
+    //         r: 10,
+    //         isOutPointOut: true,
+    //         fill: "#1890ff",
+    //         opacity: 0//默認0 需要時改成0.3
+    //       }
+    //     });
+    //     group.addShape("circle", {
+    //       attrs: {
+    //         id: id,
+    //         x: x + offsetX,
+    //         y: y + offsetY,
+    //         r: 3,
+    //         isOutPoint: true,
+    //         fill: "#fff",
+    //         stroke: "#1890ff",
+    //         opacity: 0
+    //       }
+    //     });
+    //   }
+    // }
     return shape;
   },
 },
