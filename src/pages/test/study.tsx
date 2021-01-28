@@ -10,8 +10,10 @@ const { TabPane } = Tabs;
 
 // const Clock = React.lazy( () => import('./classify/clock') );
 import Clock from './classify/clock';
-import jsonp from 'src/dao/jsonp';
-
+import HighOrderComponents from './classify/highOrderComponents';
+import MouseTracker from './classify/prop';
+import MouseMove from './classify/mouseMove';
+// import Hook from './classify/hook';
 
 export default class In extends Component<any, any> {
   constructor(props: any) {
@@ -50,7 +52,7 @@ export default class In extends Component<any, any> {
   render() {
     return (
       <div>
-        <Tabs defaultActiveKey="4" onChange={this.callback}>
+        <Tabs defaultActiveKey="9" onChange={this.callback}>
           <TabPane tab="react.lazy" key="1">
             {this.state.lazy}
           </TabPane>
@@ -68,6 +70,29 @@ export default class In extends Component<any, any> {
             <hr/>
             <Button data-asd="asdasd" onClick={() => {this.eatMelon(1);}}>吃瓜群众</Button>
             {JSON.stringify('<Button data-asd="asdasd" onClick={() => {this.eatMelon(1)}}>吃瓜群众</Button>')}
+          </TabPane>
+          <TabPane tab="Fragment" key="5">
+            <>
+              <td>123</td>
+              <td>546</td>
+            </>
+            <hr/>
+            <React.Fragment>
+              <td>asdad</td>
+              <td>asdad</td>
+            </React.Fragment>
+          </TabPane>
+          <TabPane tab="高阶组件" key="6">
+            <HighOrderComponents></HighOrderComponents>
+          </TabPane>
+          <TabPane tab="prop" key="7">
+            <MouseTracker></MouseTracker>
+          </TabPane>
+          <TabPane tab="prop" key="8">
+            <MouseMove></MouseMove>
+          </TabPane>
+          <TabPane tab="prop" key="9">
+            <MouseMove></MouseMove>
           </TabPane>
         </Tabs>
       </div>
